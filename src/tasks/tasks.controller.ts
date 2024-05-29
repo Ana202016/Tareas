@@ -6,7 +6,6 @@ import { CreateTaskDto, UpdateTaskDto } from './dto/create-cat.dto';
 @Controller('tasks')
 export class TasksController {
     constructor(private tasksService: TasksService){}
-
   
     //Get: /tasks/ (index)
     @Get()
@@ -16,7 +15,6 @@ export class TasksController {
         
     }
    
-
     //POST: /tasks/ (crear una tarea)
     @Post()
     createTask(@Body() newTask : CreateTaskDto ): Task {

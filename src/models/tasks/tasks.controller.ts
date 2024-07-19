@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@
 import {  TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-cat.dto';
 import { Prisma, Task } from '@prisma/client';
-import { UpdateProjectDto } from 'src/projects/dto/update-project.dto';
+import { UpdateProjectDto } from 'src/models/projects/dto/update-project.dto';
 
 // localhost/tasks
 @Controller('tasks')
@@ -18,7 +18,7 @@ export class TasksController {
     //POST: /tasks/ (crear una tarea)
     @Post()
     createTask(@Body() newTask : CreateTaskDto ) {
-        return this.tasksService.createTask({...newTask} as any);
+        return this.tasksService.createTask(newTask);
     }
 
     //PUT: /tasks/:id (actualizar tarea por ID)

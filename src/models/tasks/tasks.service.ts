@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-cat.dto';
 import { PrismaService } from 'src/prisma.service';
 import { Prisma, Task } from '@prisma/client';
-import { UpdateTaskDto } from './dto/update-task.dto';
+//import { UpdateTaskDto } from './dto/update-task.dto';
 
 
 @Injectable()
@@ -23,12 +23,12 @@ export class TasksService {
  * @returns 
  */
 
-      async createTask(task: Prisma.TaskCreateInput): Promise <Task> {
-        return this.prisma.task.create({
-          data: task
-        })
-      }
-
+async createTask(dto: CreateTaskDto): Promise<Task> {
+  // Convert DTO to Prisma TaskCreateInput if needed
+  return this.prisma.task.create({
+      data:dto,
+  });
+}
 
     async updateTask(id: number, task:Prisma.TaskUpdateInput): Promise<Task> {
       await this.getTask(id);

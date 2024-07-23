@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    shm_size: 128mb
+    environment:
+      - POSTGRES_USER=ana07
+      - POSTGRES_PASSWORD=Ana123
+      - POSTGRES_DB=dban
+    volumes:
+      - './pg_data:/var/lib/postgresql/data'
+    ports:
+      - "5432:5432"
+
+  app:
+    build:
+      context: .
+    environment:
+      NODE_ENV: production
+      JWT_SECRET: 6a941cb9665b4dd6e1baa39bfd222a4d
+      JWT_EXPIRES: 1h
+      DATABASE_URL: postgresql://ana07:Ana123@db:5432/dban?schema=public
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"

@@ -3,8 +3,8 @@ import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './strategies/guards/local-auth.guard';
 import { JwtAuthGuard } from './strategies/guards/jwt-auth.guard';
-import { CreateUserDto } from 'src/models/projects/users/dto/create-user.dto';
-import { UsersService } from 'src/models/projects/users/users.service';
+import { CreateUserDto } from 'src/models/users/dto/create-user.dto';
+import { UsersService } from 'src/models/users/users.service';
 import { create } from 'domain';
 import { Public } from '@prisma/client/runtime/library';
 

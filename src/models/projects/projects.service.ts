@@ -1,8 +1,7 @@
 import { Injectable, NotAcceptableException } from '@nestjs/common';
-import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
 import { PrismaService } from 'src/prisma.service';
-import { promises } from 'dns';
+
 import { Prisma, Project } from '@prisma/client';
 
 @Injectable()
@@ -45,10 +44,13 @@ export class ProjectsService {
 
   async update(id: number, updateProjectDto: UpdateProjectDto): Promise<Project> {
     await this.findOne(id);
-
+  
     return this.prisma.project.update({
-      data: {...updateProjectDto} as any,
-      where:{
+      data: {
+        name: updateProjectDto.name,
+        description: updateProjectDto.description,
+      },
+      where: {
         id
       }
     });

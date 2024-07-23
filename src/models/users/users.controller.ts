@@ -9,13 +9,13 @@ export class UsersController {
 
      //Get: /users/ (index)
 @Get()
-     getTasks(){
+  async getUsers(){
          return this.userService.getUs();       
      }
     
      //POST: /users/ (crear una tarea)
 @Post()
   async register(@Body() createUser: CreateUserDto) {
-    return this.userService.createUser({...createUser} as any);
+    return this.userService.createUser({ ...createUser});
   }
 }

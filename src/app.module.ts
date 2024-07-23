@@ -5,7 +5,7 @@ import { TasksModule } from './models/tasks/tasks.module';
 
 import { ProjectsModule } from './models/projects/projects.module';
 import { AuthModule } from './auth/auth.module';
-import { UsersModule } from './models/projects/users/users.module';
+import { UsersModule } from './models/users/users.module';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({

@@ -1,12 +1,15 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TasksModule } from './models/tasks/tasks.module';
-
-import { ProjectsModule } from './models/projects/projects.module';
+//import { TasksModule } from './models/tasks/tasks.module';
+//import { ProjectsModule } from './models/projects/projects.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './models/users/users.module';
 import { ConfigModule } from '@nestjs/config';
+import { JwtAuthGuard } from './auth/strategies/guards/jwt-auth.guard';
+import { APP_GUARD } from '@nestjs/core';
+import { TasksModule } from './models/tasks/tasks.module';
+import { ProjectsModule } from './models/projects/projects.module';
 
 @Module({
   imports: [
@@ -17,6 +20,8 @@ import { ConfigModule } from '@nestjs/config';
     UsersModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService
+  ],
 })
 export class AppModule {}

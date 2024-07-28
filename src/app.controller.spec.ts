@@ -14,8 +14,9 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
+  describe('Verificar que el root devuelva el mensaje corecto', () => {
+    it('Debe retornar "Hello World!"', () => {
+      //evaluar la respuesta esperada
       expect(appController.getHello()).toBe('Hello World!');
     });
   });

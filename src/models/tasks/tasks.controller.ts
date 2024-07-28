@@ -2,7 +2,8 @@ import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@
 import {  TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-cat.dto';
 import { Prisma, Task } from '@prisma/client';
-import { UpdateProjectDto } from 'src/models/projects/dto/update-project.dto';
+import { UpdateProjectDto } from '../projects/dto/update-project.dto';
+
 
 // localhost/tasks
 @Controller('tasks')

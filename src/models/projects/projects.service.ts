@@ -1,8 +1,9 @@
 import { Injectable, NotAcceptableException } from '@nestjs/common';
 import { UpdateProjectDto } from './dto/update-project.dto';
-import { PrismaService } from 'src/prisma.service';
+
 
 import { Prisma, Project } from '@prisma/client';
+import { PrismaService } from '../../prisma.service';
 
 @Injectable()
 export class ProjectsService {

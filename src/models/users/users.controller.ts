@@ -10,7 +10,7 @@ export class UsersController {
      //Get: /users/ (index)
 @Get()
   async getUsers(){
-         return this.userService.getUs();       
+         return this.userService.get();       
      }
     
      //POST: /users/ (crear una tarea)

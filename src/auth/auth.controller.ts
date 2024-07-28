@@ -1,12 +1,11 @@
-import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
-import { AuthService } from './auth.service';
-import { LocalAuthGuard } from './strategies/guards/local-auth.guard';
-import { JwtAuthGuard } from './strategies/guards/jwt-auth.guard';
-import { CreateUserDto } from 'src/models/users/dto/create-user.dto';
-import { UsersService } from 'src/models/users/users.service';
-import { create } from 'domain';
-import { Public } from '@prisma/client/runtime/library';
+import { Controller, Post, Body, UseGuards, Get, Request, HttpCode, HttpStatus } from "@nestjs/common";
+import { UsersService } from "../models/users/users.service";
+import { AuthService } from "./auth.service";
+import { JwtAuthGuard } from "./strategies/guards/jwt-auth.guard";
+import { LocalAuthGuard } from "./strategies/guards/local-auth.guard";
+import { CreateUserDto } from "../models/users/dto/create-user.dto";
+import { Public } from "@prisma/client/runtime/library";
+
 
 @Controller('auth')
 export class AuthController {
@@ -23,10 +22,13 @@ export class AuthController {
       return this.userService.create(CreateUserDto);
     }
 
-  
+   
     @UseGuards(LocalAuthGuard)
+    
     @Post('login')
+    @HttpCode(HttpStatus.OK)
     async login(@Request() req) {
+      console.log(req.body)
       return this.authService.login(req.body);
     }
 
@@ -40,7 +42,7 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @Get('/users')
   async findAll() {
-    return this.userService.getUs();
+    return this.userService.get();
   }
 /*
   @UseGuards(LocalAuthGuard)
